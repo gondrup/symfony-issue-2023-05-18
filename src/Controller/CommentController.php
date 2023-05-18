@@ -15,6 +15,9 @@ class CommentController extends AbstractController
     public function index(Request $request): Response
     {
         $comment = new Comment();
+        // Be helpful and pre-populate email from session or somewhere else
+        $comment->setEmail('blah@blah.co.uk');
+
         $form = $this->createForm(CommentType::class, $comment);
 
         $form->handleRequest($request);
